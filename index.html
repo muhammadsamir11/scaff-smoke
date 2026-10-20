@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scaff — Design studio</title>
+  <meta name="description" content="Scaff sets type, color, space, and component structure for product teams whose interface has outgrown the first version.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #efeae2;
+      --paper-2: #e5dfd4;
+      --ink: #1c1915;
+      --ink-soft: #5e574e;
+      --line: rgba(28, 25, 21, 0.16);
+      --accent: #b8431f;
+      --accent-hover: #8f3216;
+      --accent-ink: #fff8f3;
+      --measure: 1120px;
+      --serif: "Newsreader", "Iowan Old Style", Palatino, serif;
+      --sans: "Instrument Sans", "Avenir Next", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    ::selection {
+      background: #f0c7b8;
+      color: var(--ink);
+    }
+
+    a { color: inherit; }
+
+    .skip {
+      position: absolute;
+      left: 16px;
+      top: -80px;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 8px 12px;
+      z-index: 2;
+    }
+
+    .skip:focus { top: 12px; }
+
+    .wrap {
+      width: min(var(--measure), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(200px, 0.5fr);
+      gap: 48px;
+      align-items: end;
+      padding: 72px 0 64px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin: 0 0 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.88;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+
+    .dek {
+      max-width: 38rem;
+      margin: 28px 0 0;
+      font-size: 19px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      margin-top: 36px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 18px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 2px;
+    }
+
+    .button:hover { background: var(--accent-hover); }
+
+    .text-link {
+      font-size: 15px;
+      font-weight: 600;
+      text-underline-offset: 4px;
+    }
+
+    .meta {
+      display: grid;
+      gap: 22px;
+      padding-bottom: 8px;
+    }
+
+    .meta p { margin: 0; }
+
+    .meta dt {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .meta dd {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    section { padding: 72px 0; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(36px, 4vw, 52px);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+
+    .work-list {
+      list-style: none;
+      margin: 28px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .work-list a {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) auto;
+      gap: 16px 28px;
+      align-items: center;
+      padding: 22px 8px;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+    }
+
+    .work-list a > * { min-width: 0; }
+
+    .work-list a:hover { background: var(--paper-2); }
+
+    .plate {
+      display: grid;
+      height: 104px;
+      padding: 16px;
+      border-radius: 2px;
+    }
+
+    .plate i {
+      display: block;
+      border-radius: 1px;
+    }
+
+    .plate-ledger {
+      background: #1c3a34;
+      align-content: center;
+      gap: 8px;
+    }
+
+    .plate-ledger i {
+      height: 6px;
+      background: rgba(239, 234, 226, 0.28);
+    }
+
+    .plate-ledger i:first-child {
+      width: 62%;
+      height: 9px;
+      background: #efeae2;
+    }
+
+    .plate-plot {
+      background: #c4a15a;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 8px;
+    }
+
+    .plate-plot i { background: #1c1915; }
+    .plate-plot i:nth-child(1) { height: 28px; }
+    .plate-plot i:nth-child(2) { height: 52px; }
+    .plate-plot i:nth-child(3) { height: 36px; }
+    .plate-plot i:nth-child(4) { height: 68px; }
+
+    .plate-ward {
+      background: #d8cfc3;
+      border: 1px solid var(--line);
+      grid-template-columns: repeat(4, 1fr);
+      align-content: center;
+      gap: 6px;
+    }
+
+    .plate-ward i {
+      height: 22px;
+      background: rgba(28, 25, 21, 0.12);
+    }
+
+    .plate-ward i:nth-child(2),
+    .plate-ward i:nth-child(7) { background: var(--accent); }
+
+    .index {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+    }
+
+    .work-list h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .work-list p {
+      margin: 8px 0 0;
+      max-width: 42rem;
+      color: var(--ink-soft);
+      font-size: 16px;
+    }
+
+    .discipline {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 36px;
+      border-top: 1px solid var(--line);
+    }
+
+    .method-grid article {
+      padding-top: 24px;
+      border-top: 1px solid var(--ink);
+      margin-top: -1px;
+    }
+
+    .method-grid span {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .method-grid h3 {
+      margin: 0 0 12px;
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+
+    .method-grid p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 16px;
+    }
+
+    .close {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .close .wrap {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 32px;
+      align-items: end;
+    }
+
+    .close h2 { color: var(--paper); }
+
+    .close p {
+      margin: 16px 0 0;
+      color: rgba(239, 234, 226, 0.72);
+      max-width: 36rem;
+    }
+
+    .close a {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3vw, 40px);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-underline-offset: 6px;
+      overflow-wrap: anywhere;
+    }
+
+    .close a:hover { color: #fff; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0 32px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 800px) {
+      .wrap { width: min(var(--measure), calc(100% - 32px)); }
+      .hero,
+      .close .wrap,
+      .method-grid,
+      .work-list a { grid-template-columns: 1fr; }
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .discipline { white-space: normal; }
+      .nav-links { gap: 16px; }
+      section { padding: 56px 0; }
+      .hero { padding: 48px 0 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .nav { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .dek { font-size: 17px; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="wordmark" href="#main">Scaff</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#start">Start a project</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div>
+        <p class="kicker">Design studio</p>
+        <h1 id="hero-title">Product UI that holds up in production.</h1>
+        <p class="dek">Scaff sets type, color, space, and component structure for product teams whose interface has outgrown the first version.</p>
+        <div class="actions">
+          <a class="button" href="#start">Start a project</a>
+          <a class="text-link" href="#work">Selected work</a>
+        </div>
+      </div>
+      <dl class="meta">
+        <div>
+          <dt>Booking</dt>
+          <dd>Autumn 2026</dd>
+        </div>
+        <div>
+          <dt>Studio</dt>
+          <dd>Remote · New York</dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>Product interface</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="work" class="wrap" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Selected work</h2>
+        <p class="section-note">Three recent systems</p>
+      </div>
+      <ol class="work-list">
+        <li>
+          <a href="#start">
+            <span class="plate plate-ledger" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div>
+              <span class="index">01</span>
+              <h3>Ledger</h3>
+              <p>A private bank’s web app. The type ramp was rebuilt and the transaction list tightened so balances read before labels.</p>
+            </div>
+            <span class="discipline">Interface · Type</span>
+          </a>
+        </li>
+        <li>
+          <a href="#start">
+            <span class="plate plate-plot" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <div>
+              <span class="index">02</span>
+              <h3>Plot</h3>
+              <p>An agronomy dashboard. Density went up, and the contrast on chart labels went with it.</p>
+            </div>
+            <span class="discipline">Data · Color</span>
+          </a>
+        </li>
+        <li>
+          <a href="#start">
+            <span class="plate plate-ward" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <div>
+              <span class="index">03</span>
+              <h3>Ward</h3>
+              <p>Clinic scheduling. Fewer surfaces, one accent, and a calendar that stays quiet until something changes.</p>
+            </div>
+            <span class="discipline">Product · Space</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <section id="method" class="wrap" aria-labelledby="method-title">
+      <h2 id="method-title">Method</h2>
+      <div class="method-grid">
+        <article>
+          <span>01</span>
+          <h3>Look</h3>
+          <p>We start from the live screen: hierarchy, contrast, and the components already in the system.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Set</h3>
+          <p>Tokens get names. Type sizes, spacing steps, and color roles are written down before anything new is drawn.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Ship</h3>
+          <p>The page or component lands in the codebase, matched to the spacing and naming that already exist.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="start" class="close" aria-labelledby="close-title">
+      <div class="wrap">
+        <div>
+          <h2 id="close-title">Tell us which screen is wrong.</h2>
+          <p>Send the frame, the route, or the component. We reply with a concrete recommendation before any new visual system.</p>
+        </div>
+        <a href="mailto:studio@scaff.design">studio@scaff.design</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>Scaff · Design studio</span>
+    <span>© 2026</span>
+  </footer>
+</body>
+</html>
