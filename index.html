@@ -94,7 +94,8 @@
       font-weight: 500;
     }
 
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--accent); }
 
     .hero {
       display: grid;
@@ -401,6 +402,14 @@
       font-size: 14px;
     }
 
+    footer a {
+      color: inherit;
+      font-weight: 500;
+      text-underline-offset: 3px;
+    }
+
+    footer a:hover { color: var(--accent); }
+
     :focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
@@ -438,10 +447,11 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="wrap">
     <nav class="nav" aria-label="Primary">
-      <a class="wordmark" href="#main">Scaff</a>
+      <a class="wordmark" href="/">Scaff</a>
       <ul class="nav-links">
         <li><a href="#work">Work</a></li>
         <li><a href="#method">Method</a></li>
+        <li><a href="/about-us">About us</a></li>
         <li><a href="#start">Start a project</a></li>
       </ul>
     </nav>
@@ -456,6 +466,7 @@
         <div class="actions">
           <a class="button" href="#start">Start a project</a>
           <a class="text-link" href="#work">Selected work</a>
+          <a class="text-link" href="/about-us">About us</a>
         </div>
       </div>
       <dl class="meta">
@@ -549,7 +560,7 @@
   </main>
 
   <footer class="wrap">
-    <span>Scaff · Design studio</span>
+    <span>Scaff · Design studio · <a href="/about-us">About us</a></span>
     <span>© 2026</span>
   </footer>
 </body>
