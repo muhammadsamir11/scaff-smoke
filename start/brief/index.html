@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Write a brief — Scaff</title>
+  <meta name="description" content="Five questions. Answer what you can; a link and a sentence are enough to start.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="/">
+        <img src="/assets/logo.svg" width="104" height="28" alt="Scaff">
+      </a>
+      <ul class="nav-links">
+        <li><a href="/work">Work</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/journal">Journal</a></li>
+        <li><a href="/about-us">About us</a></li>
+        <li><a href="/start" aria-current="page">Start a project</a></li>
+      </ul>
+    </nav>
+      <ol class="crumbs" aria-label="Breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/start">Start a project</a></li>
+        <li aria-current="page">Brief</li>
+      </ol>
+  </header>
+
+  <main id="main">
+    <section class="hero compact wrap" aria-labelledby="page-title">
+      <div>
+        <p class="kicker">Start a project · Brief</p>
+        <h1 id="page-title">The brief.</h1>
+        <p class="dek">Five questions. Answer what you can; a link and a sentence are enough to start.</p>
+
+      </div>
+
+    </section>
+
+<section class="wrap" aria-labelledby="form-title">
+      <div class="split">
+        <h2 id="form-title">About the work</h2>
+        <form class="form" action="/start/brief/thanks" method="get">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="screen">The screen that’s wrong</label>
+            <input id="screen" name="screen" type="url" placeholder="https://app.example.com/dashboard">
+            <p class="hint">A live URL, a staging link, or a Figma frame.</p>
+          </div>
+          <div class="field">
+            <fieldset>
+              <legend>What you need</legend>
+              <label class="choice"><input type="radio" name="need" value="audit" checked> An audit</label>
+              <label class="choice"><input type="radio" name="need" value="system"> A design system</label>
+              <label class="choice"><input type="radio" name="need" value="redesign"> A redesign</label>
+            </fieldset>
+          </div>
+          <div class="field">
+            <label for="wrong">What feels wrong</label>
+            <textarea id="wrong" name="wrong" placeholder="The balance is hard to find on the account page."></textarea>
+          </div>
+          <button class="button" type="submit">Send the brief</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="wrap">
+    <span><a href="/">Scaff</a> · Design studio · <a href="/journal">Journal</a> · <a href="/about-us/team/careers">Careers</a></span>
+    <span>© 2026</span>
+  </footer>
+</body>
+</html>

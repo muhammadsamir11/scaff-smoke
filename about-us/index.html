@@ -70,13 +70,16 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .wordmark {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 500;
-      letter-spacing: -0.03em;
+    .logo {
+      display: block;
+      line-height: 0;
       text-decoration: none;
-      line-height: 1;
+    }
+
+    .logo img {
+      display: block;
+      height: 28px;
+      width: auto;
     }
 
     .nav-links {
@@ -93,6 +96,9 @@
       font-size: 15px;
       font-weight: 500;
     }
+
+    .nav-links { flex-wrap: wrap; row-gap: 8px; }
+    .nav-links a { white-space: nowrap; }
 
     .nav-links a:hover,
     .nav-links a[aria-current="page"] { color: var(--accent); }
@@ -335,12 +341,15 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="wrap">
     <nav class="nav" aria-label="Primary">
-      <a class="wordmark" href="/">Scaff</a>
+      <a class="logo" href="/">
+        <img src="/assets/logo.svg" width="104" height="28" alt="Scaff">
+      </a>
       <ul class="nav-links">
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/#method">Method</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/journal">Journal</a></li>
         <li><a href="/about-us" aria-current="page">About us</a></li>
-        <li><a href="/#start">Start a project</a></li>
+        <li><a href="/start">Start a project</a></li>
       </ul>
     </nav>
   </header>
@@ -353,7 +362,7 @@
         <p class="dek">Scaff is a small design studio for product teams whose UI has outgrown the first version. We name the tokens, tighten hierarchy, and land the change in the codebase.</p>
         <div class="actions">
           <a class="button" href="/about-us/ready">See if you’re ready</a>
-          <a class="text-link" href="#start">Start a project</a>
+          <a class="text-link" href="/about-us/team">Meet the team</a>
         </div>
       </div>
       <dl class="meta">
@@ -409,7 +418,7 @@
           <h2 id="close-title">Tell us which screen is wrong.</h2>
           <p>Send the frame, the route, or the component. We reply with a concrete recommendation before any new visual system.</p>
         </div>
-        <a href="mailto:studio@scaff.design">studio@scaff.design</a>
+        <a href="/start">Start a project</a>
       </div>
     </section>
   </main>

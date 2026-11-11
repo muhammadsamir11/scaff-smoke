@@ -70,13 +70,16 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .wordmark {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 500;
-      letter-spacing: -0.03em;
+    .logo {
+      display: block;
+      line-height: 0;
       text-decoration: none;
-      line-height: 1;
+    }
+
+    .logo img {
+      display: block;
+      height: 28px;
+      width: auto;
     }
 
     .nav-links {
@@ -93,6 +96,9 @@
       font-size: 15px;
       font-weight: 500;
     }
+
+    .nav-links { flex-wrap: wrap; row-gap: 8px; }
+    .nav-links a { white-space: nowrap; }
 
     .nav-links a:hover,
     .nav-links a[aria-current="page"] { color: var(--accent); }
@@ -315,12 +321,15 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="wrap">
     <nav class="nav" aria-label="Primary">
-      <a class="wordmark" href="/">Scaff</a>
+      <a class="logo" href="/">
+        <img src="/assets/logo.svg" width="104" height="28" alt="Scaff">
+      </a>
       <ul class="nav-links">
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/#method">Method</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/journal">Journal</a></li>
         <li><a href="/about-us" aria-current="page">About us</a></li>
-        <li><a href="/#start">Start a project</a></li>
+        <li><a href="/start">Start a project</a></li>
       </ul>
     </nav>
   </header>
@@ -388,7 +397,7 @@
         <div class="bring-copy">
           <p>Mail the frame, the route, or the component. Say what should read first and what feels off. We reply with a concrete recommendation before any new visual system.</p>
           <p>If you only have a screenshot, send that. If you have access to the codebase, say so — shipped files are part of how we work.</p>
-          <p><a href="/about-us">Back to about the studio</a></p>
+          <p><a href="/start/brief">Write a brief</a> · <a href="/about-us">Back to about the studio</a></p>
         </div>
       </div>
     </section>
@@ -399,7 +408,7 @@
           <h2 id="close-title">If that sounds like you, write us.</h2>
           <p>Include the screen and the constraint. We answer with the token, size, or component to change first.</p>
         </div>
-        <a href="mailto:studio@scaff.design">studio@scaff.design</a>
+        <a href="/start/brief">Write a brief</a>
       </div>
     </section>
   </main>
