@@ -561,6 +561,9 @@ footer a:hover { color: var(--accent); }
   font-size: 16px;
 }
 
+.steps a { text-underline-offset: 3px; }
+.steps a:hover { color: var(--accent); }
+
 .figure {
   display: grid;
   height: 260px;
